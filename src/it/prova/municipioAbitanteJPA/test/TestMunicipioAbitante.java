@@ -46,6 +46,10 @@ public class TestMunicipioAbitante {
 
 			testLazyInitExc(municipioService, abitanteService);
 
+			testCercaTuttiIMunicipiConMinorenni(municipioService, abitanteService);
+
+			testCercaTuttiIMunicipiConDescrizioneIniziaCon(municipioService, abitanteService);
+
 		} catch (Throwable e) {
 			e.printStackTrace();
 		} finally {
@@ -213,6 +217,20 @@ public class TestMunicipioAbitante {
 			throw new RuntimeException(
 					"testCercaTuttiGliAbitantiConCognome fallito: non ci sono municipi a cui collegarci ");
 		System.out.println(abitanteService.cercaTuttiGliAbitantiConMunicipioIniziaCon("X"));
+	}
+
+	private static void testCercaTuttiIMunicipiConMinorenni(MunicipioService municipioService,
+			AbitanteService abitanteService) throws Exception {
+		System.out.println("Inizio testCercaTuttiIMunicipiConMinorenni");
+		System.out.println(municipioService.cercaTuttiIMunicipiConMinorenni());
+		System.out.println("Inizio testCercaTuttiIMunicipiConMinorenni");
+	}
+
+	private static void testCercaTuttiIMunicipiConDescrizioneIniziaCon(MunicipioService municipioService,
+			AbitanteService abitanteService) throws Exception {
+		System.out.println("Inizio testCercaTuttiIMunicipiConDescrizioneIniziaCon");
+		System.out.println(municipioService.cercaTuttiIMunicipiConDescrizioneIniziaCon("Albergo"));
+		System.out.println("Fine testCercaTuttiIMunicipiConDescrizioneIniziaCon");
 	}
 
 }
