@@ -42,6 +42,8 @@ public class TestMunicipioAbitante {
 
 			testCercaTuttiGliAbitantiConCognome(municipioService, abitanteService);
 
+			testCercaTuttiGliAbitantiConMunicipioIniziaCon(municipioService, abitanteService);
+
 			testLazyInitExc(municipioService, abitanteService);
 
 		} catch (Throwable e) {
@@ -196,10 +198,21 @@ public class TestMunicipioAbitante {
 		abitanteService.inserisciNuovo(nuovoAbitantePerTest2);
 		if (abitanteService.cercaTuttiGliAbitantiConCognome("Carelli").size() != 2)
 			throw new RuntimeException("testCercaTuttiGliAbitantiConCognome fallito: numero record inatteso ");
-		System.out.println(abitanteService.cercaTuttiGliAbitantiConCognome("Carelli"));		
+		System.out.println(abitanteService.cercaTuttiGliAbitantiConCognome("Carelli"));
 		abitanteService.rimuovi(nuovoAbitantePerTest1.getId());
 		abitanteService.rimuovi(nuovoAbitantePerTest2.getId());
 		System.out.println("Fine testCercaTuttiGliAbitantiConCognome");
+
+	}
+
+	private static void testCercaTuttiGliAbitantiConMunicipioIniziaCon(MunicipioService municipioService,
+			AbitanteService abitanteService) throws Exception {
+		System.out.println("Inizio testCercaTuttiGliAbitantiConMunicipioIniziaCon");
+		List<Municipio> listaMunicipiPresenti = municipioService.listAllMunicipi();
+		if (listaMunicipiPresenti.isEmpty())
+			throw new RuntimeException(
+					"testCercaTuttiGliAbitantiConCognome fallito: non ci sono municipi a cui collegarci ");
+		System.out.println(abitanteService.cercaTuttiGliAbitantiConMunicipioIniziaCon("X"));
 	}
 
 }

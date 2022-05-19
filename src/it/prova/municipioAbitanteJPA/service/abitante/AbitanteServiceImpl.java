@@ -166,4 +166,19 @@ public class AbitanteServiceImpl implements AbitanteService {
 		}
 	}
 
+	@Override
+	public List<Abitante> cercaTuttiGliAbitantiConMunicipioIniziaCon(String codice) throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			abitanteDAO.setEntityManager(entityManager);
+			return abitanteDAO.findAllByCodiceMunicipioIniziaCon(codice);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
 }

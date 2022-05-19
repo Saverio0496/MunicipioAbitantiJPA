@@ -70,7 +70,7 @@ public class AbitanteDAOImpl implements AbitanteDAO {
 	public List<Abitante> findAllByCodiceMunicipioIniziaCon(String codice) throws Exception {
 		TypedQuery<Abitante> query = entityManager.createQuery("from Abitante a where a.municipio.codice like ?1",
 				Abitante.class);
-		return query.setParameter(1, codice + '%').getResultList();
+		return query.setParameter(1, codice + "%").getResultList();
 	}
 
 }

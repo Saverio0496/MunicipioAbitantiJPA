@@ -6,7 +6,7 @@ import it.prova.municipioAbitanteJPA.dao.abitante.AbitanteDAO;
 import it.prova.municipioAbitanteJPA.model.Abitante;
 
 public interface AbitanteService {
-	
+
 	public List<Abitante> listAllAbitanti() throws Exception;
 
 	public Abitante caricaSingoloAbitante(Long id) throws Exception;
@@ -18,10 +18,12 @@ public interface AbitanteService {
 	public void rimuovi(Long idAbitanteInstance) throws Exception;
 
 	public List<Abitante> cercaTuttiGliAbitantiConNome(String nome) throws Exception;
-	
+
 	public List<Abitante> cercaTuttiGliAbitantiConCognome(String cognome) throws Exception;
-	
-	//per injection
+
+	public List<Abitante> cercaTuttiGliAbitantiConMunicipioIniziaCon(String codice) throws Exception;
+
+	// per injection
 	public void setAbitanteDAO(AbitanteDAO abitanteDAO);
 
 }
